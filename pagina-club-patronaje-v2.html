@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Patronaje Inteligente — Cinthia Arena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --magenta: #d22085;
+            --magenta-dark: #a8186a;
+            --rosa: #ffb5da;
+            --rosa-claro: #fff0f7;
+            --crema: #fdf8f5;
+            --blanco: #ffffff;
+            --texto: #2d1520;
+            --texto-light: #5a4550;
+            --texto-muted: #8a7580;
+            --dorado: #c9a84c;
+            --dorado-light: #f5e6b8;
+            --gris-bg: #f7f3f0;
+            --sombra: rgba(210,32,133,0.08);
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--blanco);
+            color: var(--texto);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(165deg, #1a0a12 0%, #2d0f1e 40%, #3d1528 70%, #1a0a12 100%);
+            padding: 80px 0 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(210,32,133,0.12) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.08) 0%, transparent 40%);
+            animation: shimmer 12s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-3%, 2%); }
+        }
+
+        .hero .container { position: relative; z-index: 2; }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            border: 1px solid rgba(201,168,76,0.4);
+            padding: 8px 24px;
+            border-radius: 30px;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5.5vw, 52px);
+            font-weight: 700;
+            color: var(--blanco);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 em { color: var(--rosa); font-style: italic; }
+
+        .hero-sub {
+            font-size: 17px;
+            color: rgba(255,255,255,0.72);
+            max-width: 620px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .hero-stat { text-align: center; }
+
+        .hero-stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--rosa);
+        }
+
+        .hero-stat-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--magenta), var(--magenta-dark));
+            color: var(--blanco);
+            padding: 18px 48px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(210,32,133,0.35);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(210,32,133,0.5);
+        }
+
+        .hero-micro {
+            font-size: 13px;
+            color: rgba(255,255,255,0.45);
+            margin-top: 16px;
+        }
+
+        /* ===== SECCIONES GENERALES ===== */
+        section { padding: 80px 0; }
+        .section-light { background: var(--blanco); }
+        .section-crema { background: var(--crema); }
+        .section-rosa { background: var(--rosa-claro); }
+        .section-dark {
+            background: linear-gradient(170deg, #1a0a12, #2d0f1e);
+            color: var(--blanco);
+        }
+
+        .section-tag {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--magenta);
+            margin-bottom: 16px;
+        }
+
+        .section-dark .section-tag { color: var(--dorado); }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(26px, 4vw, 38px);
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 20px;
+        }
+
+        h2 em { color: var(--magenta); font-style: italic; }
+        .section-dark h2 em { color: var(--rosa); }
+
+        .section-intro {
+            font-size: 16px;
+            color: var(--texto-light);
+            max-width: 640px;
+            line-height: 1.85;
+            margin-bottom: 48px;
+        }
+
+        .section-dark .section-intro { color: rgba(255,255,255,0.65); }
+
+        /* ===== PROBLEMA ===== */
+        .problema-lista {
+            list-style: none;
+            max-width: 640px;
+        }
+
+        .problema-lista li {
+            position: relative;
+            padding: 16px 0 16px 36px;
+            font-size: 16px;
+            color: var(--texto-light);
+            line-height: 1.7;
+            border-bottom: 1px solid rgba(45,21,32,0.06);
+        }
+
+        .problema-lista li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--magenta);
+            font-weight: 700;
+        }
+
+        .problema-lista li:last-child { border-bottom: none; }
+
+        .frase-puente {
+            margin-top: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-style: italic;
+            color: var(--magenta);
+            line-height: 1.5;
+            max-width: 560px;
+        }
+
+        /* ===== SOLUCIÓN GRID ===== */
+        .solucion-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .solucion-card {
+            background: var(--blanco);
+            border-radius: 16px;
+            padding: 36px 28px;
+            box-shadow: 0 4px 24px var(--sombra);
+            border: 1px solid rgba(210,32,133,0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .solucion-card:hover { transform: translateY(-4px); }
+
+        .solucion-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+            background: var(--rosa-claro);
+        }
+
+        .solucion-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--texto);
+        }
+
+        .solucion-card p {
+            font-size: 14px;
+            color: var(--texto-light);
+            line-height: 1.75;
+        }
+
+        /* ===== TIMELINE ===== */
+        .incluye-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .incluye-timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--magenta), var(--rosa), transparent);
+        }
+
+        .incluye-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .incluye-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--magenta);
+            border: 3px solid var(--blanco);
+            box-shadow: 0 0 0 2px var(--magenta);
+        }
+
+        .incluye-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--texto);
+        }
+
+        .incluye-item p {
+            font-size: 15px;
+            color: var(--texto-light);
+            line-height: 1.8;
+        }
+
+        .tag-nivel {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-top: 8px;
+        }
+
+        .tag-basico { background: #e8f5e9; color: #2e7d32; }
+        .tag-intermedio { background: #fff3e0; color: #e65100; }
+        .tag-avanzado { background: #fce4ec; color: #c62828; }
+        .tag-transversal { background: #e8eaf6; color: #283593; }
+
+        /* ===== RUTAS ===== */
+        .ruta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .ruta-card {
+            text-align: center;
+            padding: 32px 16px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .ruta-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--rosa);
+            margin-bottom: 12px;
+        }
+
+        .ruta-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--blanco);
+            margin-bottom: 10px;
+        }
+
+        .ruta-card p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.65;
+        }
+
+        /* ===== PARA QUIÉN ===== */
+        .para-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 48px;
+        }
+
+        .para-col h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .para-col.si h3 { color: var(--magenta); }
+        .para-col.no h3 { color: var(--texto-muted); }
+
+        .para-col ul { list-style: none; }
+
+        .para-col ul li {
+            padding: 12px 0 12px 28px;
+            position: relative;
+            font-size: 15px;
+            color: var(--texto-light);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .para-col.si ul li::before { content: '✓'; position: absolute; left: 0; color: var(--magenta); font-weight: 700; }
+        .para-col.no ul li::before { content: '✗'; position: absolute; left: 0; color: var(--texto-muted); font-weight: 700; }
+
+        /* ===== MENTORA ===== */
+        .mentora-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 48px;
+            align-items: center;
+            margin-top: 48px;
+        }
+
+        .mentora-visual {
+            background: linear-gradient(145deg, var(--rosa-claro), var(--crema));
+            border-radius: 20px;
+            padding: 48px;
+            text-align: center;
+        }
+
+        .mentora-nombre {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--texto);
+            margin-bottom: 8px;
+        }
+
+        .mentora-titulo { font-size: 14px; color: var(--texto-light); letter-spacing: 0.5px; }
+
+        .mentora-stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 28px;
+        }
+
+        .mentora-stat-item { text-align: center; }
+        .mentora-stat-item .num { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--magenta); }
+        .mentora-stat-item .label { font-size: 11px; color: var(--texto-muted); letter-spacing: 0.5px; margin-top: 2px; }
+
+        .mentora-texto p { font-size: 15px; color: var(--texto-light); line-height: 1.85; margin-bottom: 16px; }
+        .mentora-texto strong { color: var(--texto); }
+
+        .mentora-cita {
+            margin-top: 24px;
+            padding: 20px 24px;
+            border-left: 3px solid var(--magenta);
+            background: var(--rosa-claro);
+            border-radius: 0 12px 12px 0;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 17px;
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        /* ===== SISTEMA REGALO ===== */
+        .regalo-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            margin-top: 48px;
+        }
+
+        .regalo-visual {
+            background: linear-gradient(145deg, #1a0a12, #2d0f1e);
+            border-radius: 20px;
+            padding: 48px 36px;
+            text-align: center;
+            border: 1px solid rgba(210,32,133,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .regalo-visual::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 30%, rgba(210,32,133,0.1), transparent 60%);
+        }
+
+        .regalo-visual * { position: relative; z-index: 1; }
+
+        .regalo-valor-tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            border: 1px solid rgba(201,168,76,0.4);
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .regalo-visual h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--blanco);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .regalo-visual p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+        }
+
+        .regalo-precio-tachado {
+            margin-top: 24px;
+            font-size: 20px;
+            color: rgba(255,255,255,0.4);
+            text-decoration: line-through;
+        }
+
+        .regalo-precio-real {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--rosa);
+            margin-top: 4px;
+        }
+
+        .regalo-funciones { list-style: none; }
+
+        .regalo-funciones li {
+            padding: 14px 0 14px 28px;
+            position: relative;
+            font-size: 15px;
+            color: var(--texto-light);
+            line-height: 1.7;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .regalo-funciones li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--magenta);
+            font-weight: 700;
+        }
+
+        .regalo-funciones li:last-child { border-bottom: none; }
+
+        /* ===== OFERTA / PRECIO ===== */
+        .oferta-central {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .oferta-card {
+            background: var(--blanco);
+            border: 2px solid var(--magenta);
+            border-radius: 24px;
+            padding: 48px 40px;
+            margin-top: 48px;
+            position: relative;
+            box-shadow: 0 16px 56px rgba(210,32,133,0.12);
+        }
+
+        .oferta-card::before {
+            content: 'OFERTA DE LANZAMIENTO — 7 DÍAS';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--magenta);
+            color: var(--blanco);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 6px 24px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .oferta-precio-antes {
+            font-size: 18px;
+            color: var(--texto-muted);
+            text-decoration: line-through;
+            margin-bottom: 8px;
+        }
+
+        .oferta-precio {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--texto);
+            line-height: 1;
+        }
+
+        .oferta-periodo {
+            font-size: 16px;
+            color: var(--texto-muted);
+            margin-bottom: 8px;
+        }
+
+        .oferta-ahorro {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin-bottom: 32px;
+        }
+
+        .oferta-incluye {
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .oferta-incluye li {
+            padding: 10px 0 10px 28px;
+            position: relative;
+            font-size: 15px;
+            color: var(--texto-light);
+            list-style: none;
+        }
+
+        .oferta-incluye li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--magenta);
+            font-weight: 700;
+        }
+
+        .oferta-incluye .regalo-highlight {
+            background: var(--rosa-claro);
+            margin: 4px -12px;
+            padding: 10px 12px 10px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--texto);
+        }
+
+        .oferta-cta {
+            display: block;
+            background: linear-gradient(135deg, var(--magenta), var(--magenta-dark));
+            color: var(--blanco);
+            padding: 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(210,32,133,0.3);
+        }
+
+        .oferta-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(210,32,133,0.5); }
+
+        .oferta-micro {
+            font-size: 13px;
+            color: var(--texto-muted);
+            margin-top: 16px;
+        }
+
+        /* ===== BONOS ===== */
+        .bonos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-top: 48px;
+        }
+
+        .bono-card {
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .bono-card.primeras-10 {
+            background: linear-gradient(145deg, #fdf8f5, #fff0f7);
+            border: 1px solid rgba(210,32,133,0.1);
+        }
+
+        .bono-card.primeras-3 {
+            background: linear-gradient(145deg, #1a0a12, #2d0f1e);
+            border: 1px solid rgba(210,32,133,0.2);
+        }
+
+        .bono-limite {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .primeras-10 .bono-limite { background: var(--magenta); color: var(--blanco); }
+        .primeras-3 .bono-limite { background: var(--dorado); color: #1a0a12; }
+
+        .bono-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .primeras-10 h3 { color: var(--texto); }
+        .primeras-3 h3 { color: var(--blanco); }
+
+        .bono-card p { font-size: 14px; line-height: 1.7; }
+        .primeras-10 p { color: var(--texto-light); }
+        .primeras-3 p { color: rgba(255,255,255,0.6); }
+
+        /* ===== DESPUÉS DEL LANZAMIENTO ===== */
+        .despues-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            max-width: 640px;
+            margin: 48px auto 0;
+        }
+
+        .despues-card {
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            border: 2px solid rgba(0,0,0,0.06);
+            background: var(--blanco);
+        }
+
+        .despues-card-titulo {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--texto-muted);
+            margin-bottom: 12px;
+        }
+
+        .despues-card .precio-val {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--texto);
+        }
+
+        .despues-card .precio-per {
+            font-size: 14px;
+            color: var(--texto-muted);
+            margin-bottom: 8px;
+        }
+
+        .despues-card .nota {
+            font-size: 13px;
+            color: var(--texto-muted);
+            font-style: italic;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-list { max-width: 640px; }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 24px 0;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--texto);
+            margin-bottom: 10px;
+        }
+
+        .faq-a {
+            font-size: 15px;
+            color: var(--texto-light);
+            line-height: 1.8;
+        }
+
+        /* ===== CTA FINAL ===== */
+        .cta-final {
+            background: linear-gradient(165deg, #1a0a12 0%, #2d0f1e 60%, #3d1528 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-final h2 { color: var(--blanco); margin-bottom: 20px; }
+        .cta-final p {
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            max-width: 520px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+
+        .cta-final .hero-cta { font-size: 17px; padding: 20px 56px; }
+        .cta-final .hero-micro { margin-top: 20px; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0d0509;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p { font-size: 13px; color: rgba(255,255,255,0.3); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            section { padding: 60px 0; }
+            .container { padding: 0 20px; }
+            .solucion-grid, .para-grid, .regalo-layout, .bonos-grid, .despues-grid { grid-template-columns: 1fr; }
+            .ruta-grid { grid-template-columns: 1fr 1fr; }
+            .mentora-layout { grid-template-columns: 1fr; }
+            .hero-stats { gap: 24px; }
+            .oferta-card { padding: 40px 24px; }
+            .oferta-precio { font-size: 44px; }
+        }
+
+        @media (max-width: 480px) {
+            .ruta-grid { grid-template-columns: 1fr; }
+            .hero { padding: 60px 0 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">Membresía mensual con Cinthia Arena</div>
+
+            <h1>Aprende a confeccionar, a cobrar lo justo<br>y a gestionar tu taller <em>como profesional</em></h1>
+
+            <p class="hero-sub">El Club Patronaje Inteligente es tu espacio de aprendizaje con el método de trazado directo sobre tela, clases de costos y precios, y las herramientas para que tu taller deje de ser un hobby y se convierta en un negocio con números claros.</p>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-num">17€</div>
+                    <div class="hero-stat-label">por mes</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num">2</div>
+                    <div class="hero-stat-label">Clases por mes</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num">2</div>
+                    <div class="hero-stat-label">Lives por mes</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num">8+</div>
+                    <div class="hero-stat-label">Meses de contenido</div>
+                </div>
+            </div>
+
+            <a href="#oferta" class="hero-cta">Quiero unirme al Club</a>
+            <p class="hero-micro">Cancela cuando quieras. Sin contratos. Sin letra pequeña.</p>
+        </div>
+    </section>
+
+    <!-- ========== PROBLEMA ========== -->
+    <section class="section-light">
+        <div class="container">
+            <div class="section-tag">Esto te suena familiar</div>
+            <h2>Sabes coser. Pero el negocio<br>no termina de <em>funcionar</em></h2>
+
+            <ul class="problema-lista">
+                <li>Inviertes horas haciendo patrones en papel que después no te calzan bien. Y cada vez que quieres un modelo nuevo, tienes que empezar de cero.</li>
+                <li>Buscas patrones gratis en internet pero la talla nunca queda, los moldes vienen mal y terminas desperdiciando tela, tiempo y ganas.</li>
+                <li>Sabes coser, pero cuando te piden una prenda a la medida te bloqueas porque no dominas el trazado. Entonces solo vendes servicio de costura a tiendas que te pagan 3€ por prenda.</li>
+                <li>Llevas años cosiendo pero no creces financieramente. No sabes exactamente cuánto te cuesta producir una prenda ni cuánto deberías cobrar. Cobras "lo que cobran las demás" y al final del mes no hay ganancia.</li>
+                <li>Gestionas todo en una libreta que se pierde, se acaba, y luego no tienes acceso a lo que anotaste. No sabes cuánto vendiste, cuánto ganaste ni cuánto perdiste.</li>
+            </ul>
+
+            <p class="frase-puente">"Si esto te duele leerlo es porque ya lo viviste. Y no tiene que seguir siendo así."</p>
+        </div>
+    </section>
+
+    <!-- ========== SOLUCIÓN ========== -->
+    <section class="section-crema">
+        <div class="container">
+            <div class="section-tag">La solución</div>
+            <h2>Patronaje + precios + gestión de taller.<br><em>Todo en un mismo lugar.</em></h2>
+
+            <p class="section-intro">El Club Patronaje Inteligente no es solo aprender a trazar. Es el sistema completo para que confecciones prendas profesionales a la medida, sepas exactamente cuánto cobrar y gestiones tu taller con números claros — no con adivinanzas ni libretas.</p>
+
+            <div class="solucion-grid">
+                <div class="solucion-card">
+                    <div class="solucion-icon">✂️</div>
+                    <h3>Trazado directo sobre tela</h3>
+                    <p>El método exclusivo de Cinthia Arena: trazas con las medidas reales del cuerpo, directo sobre la tela. Sin moldes de papel, sin imprimir, sin escalar. Menos tiempo, menos material perdido, más precisión.</p>
+                </div>
+                <div class="solucion-card">
+                    <div class="solucion-icon">💰</div>
+                    <h3>Costos y precios con método</h3>
+                    <p>Aprende a desglosar lo que realmente te cuesta cada prenda — materiales, tiempo, costos fijos — y a calcular un precio que incluya tu sueldo como costurera, tu ganancia como dueña de taller y tu margen para reinversión.</p>
+                </div>
+                <div class="solucion-card">
+                    <div class="solucion-icon">📐</div>
+                    <h3>Cada prenda queda a la medida</h3>
+                    <p>No dependes de tablas de tallas genéricas. Cada pieza se adapta al cuerpo real de quien la va a usar. Eso es lo que tus clientas valoran — y pagan.</p>
+                </div>
+                <div class="solucion-card">
+                    <div class="solucion-icon">🧵</div>
+                    <h3>Un método, muchas prendas</h3>
+                    <p>Aprendes la lógica del trazado y la aplicas a blusas, pantalones, vestidos, blazers. No memorizas moldes: entiendes cómo se construye la prenda desde adentro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== QUÉ INCLUYE ========== -->
+    <section class="section-light">
+        <div class="container">
+            <div class="section-tag">Qué incluye el club</div>
+            <h2>Un camino ordenado para que<br>avances <em>sin agobiarte</em></h2>
+
+            <p class="section-intro">Cada 15 días se libera una clase grabada nueva. Cada 15 días hay un live en vivo con Cinthia. Nunca pasan más de 7 días sin algo nuevo en tu Club. Empiezas con lo básico y subes de nivel a tu ritmo.</p>
+
+            <div class="incluye-timeline">
+                <div class="incluye-item">
+                    <h3>Bóveda de Bienvenida</h3>
+                    <p>Acceso inmediato a las bases: partes de la máquina de coser, cómo enhebrar, tipos de costura y la clase completa de costos y precios con plantilla Excel descargable. Todo lo que necesitas para arrancar con pie firme y saber cuánto vale tu trabajo desde el día uno.</p>
+                    <span class="tag-nivel tag-transversal">Acceso inmediato</span>
+                </div>
+
+                <div class="incluye-item">
+                    <h3>Mes 1 — Tu Base</h3>
+                    <p>Cartuchera y funda de almohada. Dos proyectos prácticos con costuras rectas para que ganes confianza con tus manos y con la máquina. Tu primera victoria.</p>
+                    <span class="tag-nivel tag-basico">Nivel Básico</span>
+                </div>
+
+                <div class="incluye-item">
+                    <h3>Meses 2 a 4 — Primeras Prendas de Vestir</h3>
+                    <p>5 modelos de blusas diferentes: básica, manga abullonada, tulipán, cuello V y escote campesino. Aquí das el salto de "proyectos" a ropa real que puedes vender. Incluye bono por constancia: curso de cuellos y puños.</p>
+                    <span class="tag-nivel tag-intermedio">Nivel Intermedio</span>
+                </div>
+
+                <div class="incluye-item">
+                    <h3>Meses 5 y 6 — Prendas Inferiores + Versatilidad</h3>
+                    <p>Pantalón clásico, pantalón palazzo, bermuda marinera y vestido de dama. Tu repertorio se amplía. Ya puedes confeccionar un guardarropa completo a la medida.</p>
+                    <span class="tag-nivel tag-intermedio">Intermedio — Avanzado</span>
+                </div>
+
+                <div class="incluye-item">
+                    <h3>Meses 7 y 8 — Prendas Estructuradas</h3>
+                    <p>Blazer clásico, blazer manga bombache, chaleco de dama y enterizo. Las piezas que separan la costura casera de la confección profesional de taller.</p>
+                    <span class="tag-nivel tag-avanzado">Nivel Avanzado</span>
+                </div>
+
+                <div class="incluye-item">
+                    <h3>Cada 15 días — Live con Cinthia</h3>
+                    <p>Una sesión en vivo donde Cinthia resuelve dudas, hace demostraciones y revisa trabajos de las alumnas. Contacto directo con tu mentora, dos veces al mes. No estás sola.</p>
+                    <span class="tag-nivel tag-transversal">Todos los meses</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== RUTAS ========== -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="section-tag">Tu progresión</div>
+            <h2>De cero a confección profesional.<br><em>Paso a paso.</em></h2>
+
+            <p class="section-intro">El contenido está organizado por niveles, no por cursos sueltos. Siempre sabes dónde estás, qué viene después y cuánto vale tu trabajo en cada etapa.</p>
+
+            <div class="ruta-grid">
+                <div class="ruta-card">
+                    <div class="ruta-num">01</div>
+                    <h3>Básico</h3>
+                    <p>Piezas planas, costuras rectas. Ganas confianza y soltura con la máquina.</p>
+                </div>
+                <div class="ruta-card">
+                    <div class="ruta-num">02</div>
+                    <h3>Intermedio</h3>
+                    <p>Trazado sobre tela con curvas. Blusas, bermuda, vestido. Tu primera ropa real.</p>
+                </div>
+                <div class="ruta-card">
+                    <div class="ruta-num">03</div>
+                    <h3>Avanzado</h3>
+                    <p>Pantalones, blazers, enterizo. Prendas estructuradas con acabado profesional.</p>
+                </div>
+                <div class="ruta-card">
+                    <div class="ruta-num">+</div>
+                    <h3>Transversal</h3>
+                    <p>Costos, precios, uso de máquina. Lo que aplica en todos los niveles y hace rentable tu taller.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PARA QUIÉN ========== -->
+    <section class="section-light">
+        <div class="container">
+            <div class="section-tag">¿Es para ti?</div>
+            <h2>Este Club es para ti <em>si...</em></h2>
+
+            <div class="para-grid">
+                <div class="para-col si">
+                    <h3>Sí es para ti</h3>
+                    <ul>
+                        <li>Sabes coser pero no dominas el patronaje y solo puedes vender servicio de costura por lo que te quieran pagar</li>
+                        <li>Ya haces patrones en papel pero pierdes demasiado tiempo y quieres un método más eficiente</li>
+                        <li>Estás cansada de patrones gratis que no calzan y te hacen desperdiciar tela y dinero</li>
+                        <li>Quieres confeccionar prendas a la medida con acabado profesional — para ti o para vender</li>
+                        <li>No sabes cuánto te cuesta producir cada prenda ni cuánto cobrar por ella</li>
+                        <li>Llevas años cosiendo pero no ves el fruto financiero de tu trabajo</li>
+                        <li>Gestionas tu taller en libretas, papelitos o "de memoria" y sabes que así no puedes crecer</li>
+                    </ul>
+                </div>
+                <div class="para-col no">
+                    <h3>No es para ti</h3>
+                    <ul>
+                        <li>Buscas un curso que te dé todo en un fin de semana — el Club es un proceso, no un atajo</li>
+                        <li>No estás dispuesta a practicar — el método funciona pero necesita tus manos</li>
+                        <li>Quieres que alguien te haga los patrones — aquí aprendes a hacerlos tú misma</li>
+                        <li>Buscas patronaje industrial por computadora — este es un método artesanal y manual</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MENTORA ========== -->
+    <section class="section-crema">
+        <div class="container">
+            <div class="section-tag">Tu mentora</div>
+            <h2>Con alguien que <em>vive de esto</em><br>hace 9 años</h2>
+
+            <div class="mentora-layout">
+                <div class="mentora-visual">
+                    <div class="mentora-nombre">Cinthia Arena</div>
+                    <div class="mentora-titulo">Diseñadora &amp; Confeccionista</div>
+                    <div class="mentora-stats-row">
+                        <div class="mentora-stat-item">
+                            <div class="num">9</div>
+                            <div class="label">Años de taller</div>
+                        </div>
+                        <div class="mentora-stat-item">
+                            <div class="num">433K</div>
+                            <div class="label">Seguidores</div>
+                        </div>
+                        <div class="mentora-stat-item">
+                            <div class="num">19+</div>
+                            <div class="label">Clases grabadas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mentora-texto">
+                    <p>Cinthia no aprendió patronaje en una universidad. <strong>Nunca entendió el método tradicional de patrones de papel.</strong> Así que hizo lo que hacen las que no se rinden: creó su propio camino.</p>
+
+                    <p>Desarmó las camisas de su esposo para entender cómo estaban construidas por dentro. De esa curiosidad y de prueba y error nació su método: <strong>trazado directo sobre tela, sin patrones de papel.</strong></p>
+
+                    <p>Con una máquina prestada y cero experiencia construyó un taller de confección a la medida que lleva 9 años funcionando con pedidos reales, números claros y clientas que regresan. <strong>No enseña teoría. Enseña lo que hace todos los días en su mesa de trabajo.</strong></p>
+
+                    <div class="mentora-cita">"Yo también empecé sin saber nada. Tus primeras prendas no tienen que ser perfectas. Lo que importa es que te atrevas."</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SISTEMA DE GESTIÓN — REGALO ========== -->
+    <section class="section-rosa">
+        <div class="container">
+            <div class="section-tag">Regalo exclusivo de lanzamiento</div>
+            <h2>Las que entren al plan anual se llevan<br>el Sistema Inteligente de Gestión <em>gratis</em></h2>
+
+            <p class="section-intro">Este sistema es lo que Cinthia usa en su propio taller para gestionar todo: clientes, pedidos, ventas, ganancias y costos. Deja de gestionar tu negocio en libretas que se pierden. Valor real: 97€. Para ti: gratis al unirte al plan anual.</p>
+
+            <div class="regalo-layout">
+                <div class="regalo-visual">
+                    <div class="regalo-valor-tag">Valor: 97€ — Hoy gratis</div>
+                    <h3>Sistema Inteligente<br>de Gestión de Talleres<br>de Costura</h3>
+                    <p>La herramienta que transforma tu taller de "negocio en una libreta" a negocio con datos reales.</p>
+                    <div class="regalo-precio-tachado">97€</div>
+                    <div class="regalo-precio-real">GRATIS</div>
+                </div>
+
+                <div>
+                    <ul class="regalo-funciones">
+                        <li>Calcula automáticamente el costo real de cada prenda — materiales, mano de obra, costos fijos</li>
+                        <li>Te dice exactamente cuánto cobrar para que tengas tu sueldo, tu ganancia y tu margen de reinversión</li>
+                        <li>Gestiona tu lista de clientes y contactos — toda su información en un solo lugar</li>
+                        <li>Registra y organiza tus pedidos — qué se entrega, cuándo y a quién</li>
+                        <li>Te muestra tus ventas, ganancias y utilidad con números claros — sabes si estás ganando o perdiendo</li>
+                        <li>Reemplaza la libreta, los papelitos y la calculadora del teléfono por un sistema profesional</li>
+                        <li>Diseñado para ser simple — no importa tu edad ni tu experiencia con la tecnología</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== OFERTA PRINCIPAL ========== -->
+    <section class="section-light" id="oferta">
+        <div class="container oferta-central">
+            <div class="section-tag">Oferta de lanzamiento</div>
+            <h2>Solo durante 7 días.<br><em>Después el precio sube.</em></h2>
+
+            <p class="section-intro" style="margin-left:auto;margin-right:auto;text-align:center;">Esta oferta solo estará disponible durante el evento de lanzamiento en vivo y los 7 días siguientes. Después, se cierra. Sin extensiones.</p>
+
+            <div class="oferta-card">
+                <div class="oferta-precio-antes">204€ / año (precio regular)</div>
+                <div class="oferta-precio">144€</div>
+                <div class="oferta-periodo">pago único por el año completo</div>
+                <div class="oferta-ahorro">Ahorras 60€ — menos de 12€ al mes — menos de 3€ a la semana</div>
+
+                <ul class="oferta-incluye">
+                    <li>52 semanas del Club Patronaje Inteligente</li>
+                    <li>2 clases grabadas nuevas cada mes (19+ ya disponibles)</li>
+                    <li>2 lives en vivo con Cinthia cada mes</li>
+                    <li>Progresión completa: básico → intermedio → avanzado</li>
+                    <li>Bóveda de bienvenida + clase de costos y precios con plantilla Excel</li>
+                    <li>Comunidad privada de alumnas</li>
+                    <li class="regalo-highlight">🎁 REGALO: Sistema Inteligente de Gestión de Talleres — valor 97€ — GRATIS</li>
+                </ul>
+
+                <a href="[URL_PAGO_ANUAL_144]" class="oferta-cta">Entrar al Club — 144€ por el año completo</a>
+                <p class="oferta-micro">Pago único. Acceso inmediato. Sistema de gestión incluido.</p>
+            </div>
+
+            <!-- BONOS -->
+            <div class="bonos-grid">
+                <div class="bono-card primeras-10">
+                    <div class="bono-limite">Primeras 10</div>
+                    <h3>Grupo Privado con Cinthia</h3>
+                    <p>Las primeras 10 en unirse tendrán acceso a un grupo secreto con Cinthia durante 3 meses: reuniones exclusivas, asesorías grupales y seguimiento personalizado de tu taller.</p>
+                </div>
+                <div class="bono-card primeras-3">
+                    <div class="bono-limite">Primeras 3</div>
+                    <h3>Asesoría 1:1 con Cinthia</h3>
+                    <p>Las primeras 3 en comprar recibirán una asesoría online individual con Cinthia. Solo tú, tus preguntas, tu taller. Una sesión privada que no se repite.</p>
+                </div>
+            </div>
+
+            <!-- DESPUÉS DEL LANZAMIENTO -->
+            <div style="margin-top:60px;text-align:center;">
+                <p style="font-size:14px;color:var(--texto-muted);margin-bottom:20px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Después de los 7 días el Club queda así:</p>
+            </div>
+
+            <div class="despues-grid">
+                <div class="despues-card">
+                    <div class="despues-card-titulo">Plan Mensual</div>
+                    <div class="precio-val">17€</div>
+                    <div class="precio-per">por mes</div>
+                    <p class="nota">Sin Sistema de Gestión incluido</p>
+                </div>
+                <div class="despues-card">
+                    <div class="despues-card-titulo">Plan Anual</div>
+                    <div class="precio-val">204€</div>
+                    <div class="precio-per">por año</div>
+                    <p class="nota">Sin Sistema de Gestión incluido</p>
+                </div>
+            </div>
+
+            <p style="text-align:center;font-size:14px;color:var(--texto-muted);margin-top:20px;line-height:1.7;">El Sistema Inteligente de Gestión no estará disponible para compra individual hasta después de que cierre esta oferta. Luego se venderá por separado a 97€.</p>
+        </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section class="section-crema">
+        <div class="container">
+            <div class="section-tag">Preguntas frecuentes</div>
+            <h2>Antes de que <em>preguntes</em></h2>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-q">¿Necesito experiencia previa en costura?</div>
+                    <div class="faq-a">Necesitas saber lo básico de la máquina de coser. Si sabes enhebrar y hacer una costura recta, estás lista. La Bóveda de Bienvenida incluye clases de repaso para que arranques con confianza.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">¿Qué pasa si me atraso o no puedo ver las clases a tiempo?</div>
+                    <div class="faq-a">Las clases quedan grabadas y disponibles mientras seas miembro. Puedes avanzar a tu ritmo. No hay fecha límite para completar ningún proyecto.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">¿Es diferente al patronaje tradicional con patrones de papel?</div>
+                    <div class="faq-a">Completamente. Aquí trazas directo sobre la tela con las medidas reales del cuerpo. No necesitas imprimir moldes, ni escalarlos, ni adaptarlos. Es más eficiente, más preciso y genera menos desperdicio de material.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">¿El Sistema de Gestión es complicado de usar?</div>
+                    <div class="faq-a">No. Fue diseñado para costureras, no para ingenieros. Es simple, visual y Cinthia te muestra paso a paso cómo usarlo. No importa tu edad ni tu experiencia con la tecnología.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">¿Puedo cancelar la membresía mensual cuando quiera?</div>
+                    <div class="faq-a">Sí. El plan mensual no tiene contratos ni penalidad. Si decides que no es para ti, cancelas y no se te vuelve a cobrar. El plan anual es un pago único por el año completo.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">¿El Club incluye contenido de marketing o redes sociales?</div>
+                    <div class="faq-a">No. El Club se enfoca en patronaje inteligente, confección y gestión de negocio (costos, precios, administración de taller). El contenido de marketing y redes sociales será un producto aparte en el futuro.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">¿Cómo funciona la oferta de lanzamiento?</div>
+                    <div class="faq-a">Solo durante 7 días podrás entrar al Club con pago anual de 144€ (en vez de 204€) y recibirás de regalo el Sistema Inteligente de Gestión valorado en 97€. Después de los 7 días, el Club vuelve a precio normal y el sistema se venderá por separado.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA FINAL ========== -->
+    <section class="cta-final">
+        <div class="container">
+            <h2>El método ya existe.<br>La comunidad ya está aquí.<br>Solo falta <em>que tú entres.</em></h2>
+
+            <p>Todas comenzamos desde cero. Lo que marca la diferencia es la decisión de empezar — y con quién decides aprender.</p>
+
+            <a href="#oferta" class="hero-cta">Unirme al Club — 144€ por el año completo</a>
+            <p class="hero-micro">144€/año · Sistema de Gestión gratis (valor 97€) · 2 clases + 2 lives al mes · 7 días solamente</p>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>Club Patronaje Inteligente — Academia Cinthia Arena &copy; 2026</p>
+        </div>
+    </footer>
+
+</body>
+</html>
