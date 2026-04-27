@@ -822,6 +822,48 @@
             .ruta-grid { grid-template-columns: 1fr; }
             .hero { padding: 60px 0 50px; }
         }
+
+        /* ===== HERO FOTO ===== */
+        .hero-foto-wrap {
+            margin: 0 auto 40px;
+            max-width: 760px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .hero-foto-wrap img { width: 100%; display: block; }
+
+        /* ===== MENTORA FOTO ===== */
+        .mentora-foto {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            margin-bottom: 20px;
+            border: 4px solid rgba(210,32,133,0.35);
+            box-shadow: 0 8px 32px rgba(210,32,133,0.2);
+        }
+
+        /* ===== GALERÍA PRENDAS ===== */
+        .prenda-galeria {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+        .prenda-galeria img {
+            width: 120px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(45,21,32,0.1);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .prenda-galeria img:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(45,21,32,0.18);
+        }
     </style>
 </head>
 <body>
@@ -834,6 +876,10 @@
             <h1>Aprende a confeccionar, a cobrar lo justo<br>y a gestionar tu taller <em>como profesional</em></h1>
 
             <p class="hero-sub">El Club Patronaje Inteligente es tu espacio de aprendizaje con el método de trazado directo sobre tela, clases de costos y precios, y las herramientas para que tu taller deje de ser un hobby y se convierta en un negocio con números claros.</p>
+
+            <div class="hero-foto-wrap">
+                <img src="https://raw.githubusercontent.com/lisbethreyeslanzamientos-ui/club-patronaje-cinthia/main/cinthia%20arena%20(1).png" alt="Cinthia Arena en su taller de costura">
+            </div>
 
             <div class="hero-stats">
                 <div class="hero-stat">
@@ -929,18 +975,31 @@
                     <h3>Mes 1 — Tu Base</h3>
                     <p>Cartuchera y funda de almohada. Dos proyectos prácticos con costuras rectas para que ganes confianza con tus manos y con la máquina. Tu primera victoria.</p>
                     <span class="tag-nivel tag-basico">Nivel Básico</span>
+                    <div class="prenda-galeria">
+                        <img src="https://raw.githubusercontent.com/lisbethreyeslanzamientos-ui/club-patronaje-cinthia/main/prenda-meses-1-2a.png.png" alt="Prenda meses 1-2">
+                        <img src="https://raw.githubusercontent.com/lisbethreyeslanzamientos-ui/club-patronaje-cinthia/main/prenda-meses-1-2b.png.png" alt="Prenda meses 1-2">
+                    </div>
                 </div>
 
                 <div class="incluye-item">
                     <h3>Meses 2 a 4 — Primeras Prendas de Vestir</h3>
                     <p>5 modelos de blusas diferentes: básica, manga abullonada, tulipán, cuello V y escote campesino. Aquí das el salto de "proyectos" a ropa real que puedes vender. Incluye bono por constancia: curso de cuellos y puños.</p>
                     <span class="tag-nivel tag-intermedio">Nivel Intermedio</span>
+                    <div class="prenda-galeria">
+                        <img src="https://raw.githubusercontent.com/lisbethreyeslanzamientos-ui/club-patronaje-cinthia/main/prenda-meses-3-4a.png.png" alt="Prenda meses 3-4">
+                        <img src="https://raw.githubusercontent.com/lisbethreyeslanzamientos-ui/club-patronaje-cinthia/main/prenda-meses-3-4b.png.png" alt="Prenda meses 3-4">
+                        <img src="https://raw.githubusercontent.com/lisbethreyeslanzamientos-ui/club-patronaje-cinthia/main/prenda-meses-3-4c.png.png" alt="Prenda meses 3-4">
+                    </div>
                 </div>
 
                 <div class="incluye-item">
                     <h3>Meses 5 y 6 — Prendas Inferiores + Versatilidad</h3>
                     <p>Pantalón clásico, pantalón palazzo, bermuda marinera y vestido de dama. Tu repertorio se amplía. Ya puedes confeccionar un guardarropa completo a la medida.</p>
                     <span class="tag-nivel tag-intermedio">Intermedio — Avanzado</span>
+                    <div class="prenda-galeria">
+                        <img src="https://raw.githubusercontent.com/lisbethreyeslanzamientos-ui/club-patronaje-cinthia/main/prenda-meses-5-6a.png.png" alt="Prenda meses 5-6">
+                        <img src="https://raw.githubusercontent.com/lisbethreyeslanzamientos-ui/club-patronaje-cinthia/main/prenda-meses-5-6b.png.png" alt="Prenda meses 5-6">
+                    </div>
                 </div>
 
                 <div class="incluye-item">
@@ -1031,6 +1090,7 @@
 
             <div class="mentora-layout">
                 <div class="mentora-visual">
+                    <img src="https://raw.githubusercontent.com/lisbethreyeslanzamientos-ui/club-patronaje-cinthia/main/cinthia%20arena%20(Portada%20para%20tienda%20de%20Facebook%20(cuadrado)).png" alt="Cinthia Arena" class="mentora-foto">
                     <div class="mentora-nombre">Cinthia Arena</div>
                     <div class="mentora-titulo">Diseñadora &amp; Confeccionista</div>
                     <div class="mentora-stats-row">
