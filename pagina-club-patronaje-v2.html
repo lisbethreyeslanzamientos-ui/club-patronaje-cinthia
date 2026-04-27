@@ -476,21 +476,16 @@
         }
 
         .regalo-visual {
-            background: linear-gradient(145deg, #1a0a12, #2d0f1e);
+            background: var(--blanco);
             border-radius: 20px;
             padding: 48px 36px;
             text-align: center;
-            border: 1px solid rgba(210,32,133,0.2);
+            border: 2px solid var(--magenta);
             position: relative;
             overflow: hidden;
         }
 
-        .regalo-visual::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 50% 30%, rgba(210,32,133,0.1), transparent 60%);
-        }
+        .regalo-visual::before { display: none; }
 
         .regalo-visual * { position: relative; z-index: 1; }
 
@@ -500,8 +495,8 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--dorado);
-            border: 1px solid rgba(201,168,76,0.4);
+            color: var(--magenta);
+            border: 1px solid var(--magenta);
             padding: 5px 16px;
             border-radius: 20px;
             margin-bottom: 20px;
@@ -511,21 +506,21 @@
             font-family: 'Playfair Display', serif;
             font-size: 22px;
             font-weight: 700;
-            color: var(--blanco);
+            color: var(--texto);
             margin-bottom: 12px;
             line-height: 1.3;
         }
 
         .regalo-visual p {
             font-size: 14px;
-            color: rgba(255,255,255,0.6);
+            color: var(--texto-light);
             line-height: 1.7;
         }
 
         .regalo-precio-tachado {
             margin-top: 24px;
-            font-size: 20px;
-            color: rgba(255,255,255,0.4);
+            font-size: 28px;
+            color: var(--texto-muted);
             text-decoration: line-through;
         }
 
@@ -533,7 +528,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 32px;
             font-weight: 700;
-            color: var(--rosa);
+            color: var(--magenta);
             margin-top: 4px;
         }
 
@@ -701,17 +696,17 @@
 
         .bono-limite {
             display: inline-block;
-            font-size: 10px;
+            font-size: 13px;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            padding: 5px 16px;
+            padding: 6px 20px;
             border-radius: 20px;
             margin-bottom: 16px;
         }
 
         .primeras-10 .bono-limite { background: var(--magenta); color: var(--blanco); }
-        .primeras-3 .bono-limite { background: var(--dorado); color: #1a0a12; }
+        .primeras-3 .bono-limite { background: var(--magenta); color: var(--blanco); }
 
         .bono-card h3 {
             font-family: 'Playfair Display', serif;
@@ -721,11 +716,26 @@
         }
 
         .primeras-10 h3 { color: var(--texto); }
-        .primeras-3 h3 { color: var(--blanco); }
+        .primeras-3 h3 { color: var(--texto); }
 
         .bono-card p { font-size: 14px; line-height: 1.7; }
         .primeras-10 p { color: var(--texto-light); }
-        .primeras-3 p { color: rgba(255,255,255,0.6); }
+        .primeras-3 p { color: var(--texto-light); }
+
+        .bono-card.primeras-3 {
+            background: linear-gradient(145deg, #fdf8f5, #fff0f7);
+            border: 1px solid rgba(210,32,133,0.1);
+        }
+
+        .bonos-subtitulo {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--texto);
+            text-align: center;
+            margin-top: 52px;
+            margin-bottom: 0;
+        }
 
         /* ===== DESPUÉS DEL LANZAMIENTO ===== */
         .despues-grid {
@@ -837,6 +847,7 @@
             .hero-stat-num { font-size: 20px; }
             .hero-stat-label { font-size: 10px; }
             .hero-sub { margin: 0 0 28px; line-height: 1.55; text-align: center; }
+            .hero-content { text-align: center; }
             .hero h1, .hero-micro { text-align: center; }
             .hero-badge { display: none; }
         }
@@ -1114,7 +1125,7 @@
     <!-- ========== SISTEMA DE GESTIÓN — REGALO ========== -->
     <section class="section-rosa">
         <div class="container">
-            <div class="section-tag">Regalo exclusivo de lanzamiento</div>
+            <div class="section-tag" style="font-size:15px;letter-spacing:1.5px;">🎁 Regalo exclusivo de lanzamiento</div>
             <h2>Las que entren al plan anual se llevan<br>el Sistema Inteligente de Gestión <em>gratis</em></h2>
 
             <p class="section-intro">Este sistema es lo que Cinthia usa en su propio taller para gestionar todo: clientes, pedidos, ventas, ganancias y costos. Deja de gestionar tu negocio en libretas que se pierden. Valor real: 97€. Para ti: gratis al unirte al plan anual.</p>
@@ -1172,6 +1183,7 @@
             </div>
 
             <!-- BONOS -->
+            <h3 class="bonos-subtitulo">Bonos de acción rápida</h3>
             <div class="bonos-grid">
                 <div class="bono-card primeras-10">
                     <div class="bono-limite">Primeras 12</div>
@@ -1185,27 +1197,6 @@
                 </div>
             </div>
 
-            <!-- DESPUÉS DEL LANZAMIENTO -->
-            <div style="margin-top:60px;text-align:center;">
-                <p style="font-size:14px;color:var(--texto-muted);margin-bottom:20px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Después de los 7 días el Club queda así:</p>
-            </div>
-
-            <div class="despues-grid">
-                <div class="despues-card">
-                    <div class="despues-card-titulo">Plan Mensual</div>
-                    <div class="precio-val">17€</div>
-                    <div class="precio-per">por mes</div>
-                    <p class="nota">Sin Sistema de Gestión incluido</p>
-                </div>
-                <div class="despues-card">
-                    <div class="despues-card-titulo">Plan Anual</div>
-                    <div class="precio-val">204€</div>
-                    <div class="precio-per">por año</div>
-                    <p class="nota">Sin Sistema de Gestión incluido</p>
-                </div>
-            </div>
-
-            <p style="text-align:center;font-size:14px;color:var(--texto-muted);margin-top:20px;line-height:1.7;">El Sistema Inteligente de Gestión no estará disponible para compra individual hasta después de que cierre esta oferta. Luego se venderá por separado a 97€.</p>
         </div>
     </section>
 
